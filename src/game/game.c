@@ -1,7 +1,7 @@
 #include "game.h"
 
 int thereIsAPiece(struct Board *board, const struct Pos *pos){
-    return !(board->places[pos->x][pos->y] == NONE);
+    return !(board->places[pos->x-1][pos->y-1] == NONE);
 }
 
 int makeMove(struct Board *board, const enum Piece *piece, const struct Pos *pos){
@@ -54,6 +54,8 @@ enum Piece play(void){
     enum Piece currentTeam = X;
     enum Piece winner = NONE;
 
+    short int round = 1;
+
     while(1){
         clearScr();
         printBoard(&board);
@@ -67,6 +69,52 @@ enum Piece play(void){
             break;
         }
         swapTeams(&currentTeam);
+        ++round;
+    }
+    return winner;
+}
+
+enum Piece playEasyAi(void){
+    struct Board board = {0};
+    
+    struct Pos pos = {0};
+    
+    enum Piece currentTeam = X;
+    enum Piece winner = NONE;
+
+    short int round = 1;
+
+    while(round <= 9){
+        clearScr();
+        printBoard(&board);
+        takePosInput(&pos);
+        if(makeMove(&board, &currentTeam, &pos) != 0){
+            puts("Invalid Position, try again:");
+        };
+        if(DidAnyoneWin(&board)){
+            winner = currentTeam;
+            clearScr();
+            printBoard(&board);
+            //printEndGame(&winner);
+            break;
+        }
+        swapTeams(&currentTeam);
+        ++round;
+        easyAiMove(&board, &pos);
+        if(makeMove(&board, &currentTeam, &pos) != 0){
+            puts("Invalid Position, try again:");
+        };
+        if(DidAnyoneWin(&board)){
+            winner = currentTeam;
+            clearScr();
+            printBoard(&board);
+            //printEndGame(&winner);
+            break;
+        }
+        printBoard(&board);
+        swapTeams(&currentTeam);
+        round++;
+        pressEnterToContinue();
     }
     return winner;
 }
