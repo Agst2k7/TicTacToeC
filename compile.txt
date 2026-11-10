@@ -1,0 +1,5 @@
+gcc src/main.c \
+src/CLI/cli.c \
+src/game/game.c \
+src/CLI/inputs.c \
+-o builds/tic-tac-toe-c
