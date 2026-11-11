@@ -3,4 +3,5 @@ src/CLI/cli.c \
 src/game/game.c \
 src/CLI/inputs.c \
 src/engine/easyAI.c \
+src/engine/normalAI.c \
 -o builds/tic-tac-toe-c

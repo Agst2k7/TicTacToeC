@@ -1,6 +1,6 @@
 #include "game.h"
 
-int thereIsAPiece(struct Board *board, const struct Pos *pos){
+int thereIsAPiece(const struct Board *board, const struct Pos *pos){
     return !(board->places[pos->x-1][pos->y-1] == NONE);
 }
 
@@ -91,6 +91,8 @@ enum Piece playEasyAi(void){
         if(makeMove(&board, &currentTeam, &pos) != 0){
             puts("Invalid Position, try again:");
         };
+        clearScr();
+        printBoard(&board);
         if(DidAnyoneWin(&board)){
             winner = currentTeam;
             clearScr();
@@ -100,10 +102,43 @@ enum Piece playEasyAi(void){
         }
         swapTeams(&currentTeam);
         ++round;
+        sleep(1);
         easyAiMove(&board, &pos);
         if(makeMove(&board, &currentTeam, &pos) != 0){
             puts("Invalid Position, try again:");
         };
+        clearScr();
+        printBoard(&board);
+        if(DidAnyoneWin(&board)){
+            winner = currentTeam;
+            //printEndGame(&winner);
+            break;
+        }
+        swapTeams(&currentTeam);
+        round++;
+    }
+    return winner;
+}
+
+enum Piece playNormalAi(void){
+    struct Board board = {0};
+    
+    struct Pos pos = {0};
+    
+    enum Piece currentTeam = X;
+    enum Piece winner = NONE;
+
+    short int round = 1;
+
+    while(round <= 9){
+        clearScr();
+        printBoard(&board);
+        takePosInput(&pos);
+        if(makeMove(&board, &currentTeam, &pos) != 0){
+            puts("Invalid Position, try again:");
+        };
+        clearScr();
+        printBoard(&board);
         if(DidAnyoneWin(&board)){
             winner = currentTeam;
             clearScr();
@@ -111,10 +146,22 @@ enum Piece playEasyAi(void){
             //printEndGame(&winner);
             break;
         }
+        swapTeams(&currentTeam);
+        ++round;
+        sleep(1);
+        normalAiMove(&board, &currentTeam, &pos);
+        if(makeMove(&board, &currentTeam, &pos) != 0){
+            puts("Invalid Position, try again:");
+        };
+        clearScr();
         printBoard(&board);
+        if(DidAnyoneWin(&board)){
+            winner = currentTeam;
+            //printEndGame(&winner);
+            break;
+        }
         swapTeams(&currentTeam);
         round++;
-        pressEnterToContinue();
     }
     return winner;
 }

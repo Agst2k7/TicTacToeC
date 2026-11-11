@@ -1,6 +1,6 @@
 #include "easyAI.h"
 
-int searchPossibleMoves(struct Board *board, struct Pos *possible_moves, short int *arr_size){
+int searchPossibleMovesEasy(struct Board *board, struct Pos *possible_moves, size_t *arr_size){
     struct Pos pos;
     *arr_size = 0;
     for(int i=0; i<3; ++i){
@@ -16,19 +16,19 @@ int searchPossibleMoves(struct Board *board, struct Pos *possible_moves, short i
     return 0;
 }
 
-int chooseRandomMove(const struct Pos *possible_moves, short int *arr_size, struct Pos *choosed_pos){
+int chooseRandomMoveEasy(const struct Pos *possible_moves, size_t *arr_size, struct Pos *choosed_pos){
     *choosed_pos = possible_moves[rand() % (*arr_size)];
     return 0;
 }
 
 int easyAiMove(struct Board *board, struct Pos *move){
     struct Pos possible_moves[9] = {0};
-    short int p_moves_size = 0;
+    size_t p_moves_size = 0;
     struct Pos choosed_move;
     
-    searchPossibleMoves(board, possible_moves, &p_moves_size);
+    searchPossibleMovesEasy(board, possible_moves, &p_moves_size);
 
-    chooseRandomMove(possible_moves, &p_moves_size, &choosed_move);
+    chooseRandomMoveEasy(possible_moves, &p_moves_size, &choosed_move);
 
     *move = choosed_move;
 

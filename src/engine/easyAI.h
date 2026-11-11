@@ -4,9 +4,9 @@
 #include "../game/Board/Board.h"
 #include <stdlib.h>
 
-int searchPossibleMoves(struct Board *board, struct Pos *possible_moves, short int *arr_size);
+int searchPossibleMovesEasy(struct Board *board, struct Pos *possible_moves, size_t *arr_size);
 
-int chooseRandomMove(const struct Pos *possible_moves, short int *arr_size, struct Pos *choosed_pos);
+int chooseRandomMoveEasy(const struct Pos *possible_moves, size_t *arr_size, struct Pos *choosed_pos);
 
 int easyAiMove(struct Board *board, struct Pos *move);
 

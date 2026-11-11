@@ -18,7 +18,7 @@ int main(){
     enum Piece winner = NONE;
     enum Piece currentTeam = X;
 
-    winner = playEasyAi();
+    winner = playNormalAi();
     
     return 0;
 }
