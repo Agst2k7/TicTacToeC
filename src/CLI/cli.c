@@ -1,9 +1,9 @@
 #include "cli.h"
 
 void clearScr(void){
-    printf("\033[3J");  // Limpa o scrollback (quando suportado)
-    printf("\033[2J");  // Limpa a tela
-    printf("\033[H");   // Move o cursor para o início
+    printf("\033[3J"); 
+    printf("\033[2J"); 
+    printf("\033[H");   
     fflush(stdout); 
 }
 
