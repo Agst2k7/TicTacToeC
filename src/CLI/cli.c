@@ -20,6 +20,9 @@ void printBoard(struct Board *board){
     for(int i=0; i<3; ++i){
         printf("\n");
         for(int j=0; j<3; ++j){
+            if(j == 0 && i == 0){ printf("A "); }
+            else if(j == 0 && i == 1){ printf("B "); }
+            else if(j == 0 && i == 2){ printf("C "); }
             if(j != 0){ printf(" "); }
             if(board->places[i][j] == NONE){ printf("-"); }
             else if(board->places[i][j] == X){ printf("X"); }
@@ -27,4 +30,5 @@ void printBoard(struct Board *board){
         }
     }
     printf("\n");
+    printf("  1 2 3\n");
 }

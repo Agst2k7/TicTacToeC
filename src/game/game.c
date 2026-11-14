@@ -132,12 +132,14 @@ enum Piece playNormalAi(void){
 
     while(round <= 9){
         clearScr();
+        printf("Round: %d", round);
         printBoard(&board);
         takePosInput(&pos);
         if(makeMove(&board, &currentTeam, &pos) != 0){
             puts("Invalid Position, try again:");
         };
         clearScr();
+        printf("Round: %d", round);
         printBoard(&board);
         if(DidAnyoneWin(&board)){
             winner = currentTeam;
@@ -146,6 +148,7 @@ enum Piece playNormalAi(void){
             //printEndGame(&winner);
             break;
         }
+        if(round == 9){ return NONE; }
         swapTeams(&currentTeam);
         ++round;
         sleep(1);
@@ -154,6 +157,7 @@ enum Piece playNormalAi(void){
             puts("Invalid Position, try again:");
         };
         clearScr();
+        printf("Round: %d", round);
         printBoard(&board);
         if(DidAnyoneWin(&board)){
             winner = currentTeam;
