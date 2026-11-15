@@ -6,19 +6,20 @@
 #include "CLI/cli.h"
 #include "CLI/inputs.h"
 #include "game/game.h"
+#include "graphics/graphics.h"
 
 
 int main(){
 
     srand(time(NULL));
 
-    struct Board board = {0};
+    /*struct Board board = {0};
     struct Pos pos;
 
     enum Piece winner = NONE;
     enum Piece currentTeam = X;
 
-    winner = playNormalAi();
+    winner = playNormalAi();*/
     
     return 0;
 }

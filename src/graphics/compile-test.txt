@@ -1,0 +1,2 @@
+gcc test.c graphics.c     $(pkg-config --cflags --libs raylib)     -lm -lX11     -o programa
+
