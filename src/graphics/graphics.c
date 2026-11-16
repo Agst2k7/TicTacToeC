@@ -1,7 +1,19 @@
 #include "graphics.h"
 
-void test(){
-    InitWindow(600, 600, "Tic Tac Toe");
+#define WINDOW_SIZE_X 800
+#define WINDOW_SIZE_Y 1000
+
+void drawBoard(void) {
+    //DrawLine(startPosX, startPosY, endPosX, endPosY, color);
+    DrawLine(200, 0, 200, 600, BLACK);
+    DrawLine(400, 0, 400, 600, BLACK);
+
+    DrawLine(10, 200, WINDOW_SIZE_X-10, 200, BLACK);
+    DrawLine(10, 400, WINDOW_SIZE_X-10, 400, BLACK);
+}
+
+void play_graphics(){
+    InitWindow(WINDOW_SIZE_X, WINDOW_SIZE_Y, "Tic-Tac-ToeC");
 
     SetTargetFPS(60);
 
@@ -16,6 +28,7 @@ void test(){
         ClearBackground(RAYWHITE);
 
         // Desenhar tabuleiro e símbolos
+        drawBoard();
 
         EndDrawing();
     }

@@ -4,4 +4,8 @@ src/game/game.c \
 src/CLI/inputs.c \
 src/engine/easyAI.c \
 src/engine/normalAI.c \
+src/graphics/graphics.c \
+$(pkg-config --cflags --libs raylib) \
+-lm \
+-lX11 \
 -o builds/tic-tac-toe-c

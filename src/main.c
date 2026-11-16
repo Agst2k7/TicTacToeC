@@ -13,6 +13,8 @@ int main(){
 
     srand(time(NULL));
 
+    play_graphics();
+
     /*struct Board board = {0};
     struct Pos pos;
 

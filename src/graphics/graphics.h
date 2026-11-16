@@ -3,6 +3,8 @@
 
 #include "raylib.h"
 
-void test();
+void drawBoard(void);
+
+void play_graphics(void);
 
 #endif
