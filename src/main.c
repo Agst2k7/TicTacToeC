@@ -13,15 +13,15 @@ int main(){
 
     srand(time(NULL));
 
-    play_graphics();
+    //play_graphics();
 
-    /*struct Board board = {0};
+    struct Board board = {0};
     struct Pos pos;
 
     enum Piece winner = NONE;
     enum Piece currentTeam = X;
 
-    winner = playNormalAi();*/
+    winner = playNormalAi();
     
     return 0;
 }
